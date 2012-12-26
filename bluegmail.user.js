@@ -5,6 +5,8 @@
 /**
  * @fileoverview A simple script that changes the Gmail favicon to be blue
  * if you're signed in with a second account.
+ *
+ * @author Ben Komalo (benkomalo@gmail.com)
  */
 
 
@@ -13,7 +15,7 @@ var head = document.getElementsByTagName('head')[0]
 // Remove existing favicons.
 var links = head.getElementsByTagName('link');
 for (var i = 0, link; link = links[i]; i++) {
-    if (link.rel === "shortcut icon" || links.rel === "icon") {
+    if (link.rel === 'shortcut icon' || links.rel === 'icon') {
         head.removeChild(link);
         i--;
     }
