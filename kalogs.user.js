@@ -65,6 +65,23 @@ var applyFixes = function() {
         el.style.visibility = 'hidden';
     });
 
+    // Color response times
+    forEach('.ae-logs-reqlog span[title=\'Request Time/Latency\']',
+        function(el) {
+            var msTime = Number(el.innerText.slice(0, -2)),
+                color;
+
+            if (msTime < 500) {
+                color = 'green';
+            } else if (msTime < 1000) {
+                color = 'orange';
+            } else {
+                color = 'red';
+            }
+
+            el.style.color = color;
+        });
+
     // Simplify datetime stamps.
     forEach('.ae-logs-reqlog h5 > span:first-child', function(el) {
         var datetimeStr = el.innerText;
