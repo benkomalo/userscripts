@@ -65,6 +65,28 @@ var applyFixes = function() {
         el.style.visibility = 'hidden';
     });
 
+    // Simplify datetime stamps.
+    forEach('.ae-logs-reqlog h5 > span:first-child', function(el) {
+        var datetimeStr = el.innerText;
+        var datetime = datetimeStr.split(' ');
+        if (datetime.length !== 2) {
+            return;
+        }
+        var time = datetime[1];
+        el.setAttribute('title', datetimeStr);
+        el.innerText = time.split('.')[0];
+        el.style.fontFamily = 'Courier, monospace';
+        el.style.fontSize = '14px';
+    });
+    forEach('.ae-logs-applog h5 > span:nth-child(2)', function(el) {
+        // The timestamps for individual log lines aren't that useful in
+        // collapsed mode, since the header line has a timestamp.
+        // We probably want to show it in expanded mode, though.
+        var entryParent = el.parentNode.parentNode.parentNode.parentNode;
+        if (entryParent.className.indexOf('ae-log-expanded') === -1) {
+            el.style.display = 'none';
+        }
+    });
 
     // Simplify user agents.
     var collapseUserAgent = function(el, simplified) {
