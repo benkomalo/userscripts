@@ -43,11 +43,18 @@ var applyFixes = function() {
 
     fixing = true;
 
+    // TODO(benkomalo): a lot of these can be done by applying a class and
+    // injecting CSS instead. Oh well.
+
     // Highlight any internal error codes.
+    var statusCss = 'font-weight: bold;' +
+                    'font-size: 16px;' +
+                    'margin: 0 8px;';
     forEach('.ae-logs-reqlog span[title=\'Status\']', function(statusBox) {
         if (statusBox.innerText === '500') {
-            statusBox.style.color = 'red';
-            statusBox.style.fontWeight = 'bold';
+            statusBox.style.cssText = 'color:red;' + statusCss;
+        } else {
+            statusBox.style.cssText = statusCss;
         }
     });
 
