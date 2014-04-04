@@ -19,6 +19,7 @@ var $$ = function(s, node) {
 var whiteList = [
     'benkomalo',
     'logs',
+    'derived',
     'big_bingo',
     'big_bingo_history'
 ];
@@ -70,7 +71,10 @@ function applyChanges() {
 
 
 function check() {
-    if ($('.tables-dataset-row')) {
+    var ready = !!$('.tables-dataset-row') &&
+        (noRow = $('.no-datasets-text')) &&
+        noRow.style.display == 'none';
+    if (ready) {
         applyChanges();
     } else {
         setTimeout(check, 500);
