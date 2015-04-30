@@ -18,10 +18,18 @@ var $$ = function(s, node) {
 
 var whiteList = [
     'benkomalo',
+    'learning_gain',
+    'latest',
+    'latest_content',
+    'latest_derived',
+    'latest_transformed',
     'logs',
     'derived',
-    'big_bingo',
-    'big_bingo_history'
+    'bigbingo',
+    'bigbingo_archive',
+    'bigbingo_funnels',
+    'bigbingo_history',
+    'bingo'
 ];
 
 
